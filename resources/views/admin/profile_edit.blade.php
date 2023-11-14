@@ -52,12 +52,14 @@
 
                                     <div class="col-sm-10">
                                         <img class="rounded avatar-lg" alt="200x200"
-                                            src="{{ asset($editData->profile_image) }}" data-holder-rendered="true">
+                                            src="{{ !empty($editData->profile_image) ? asset($editData->profile_image) : asset('upload/no_image.jpg') }}"
+                                            data-holder-rendered="true">
+                                        {{-- <img class="rounded avatar-lg" alt="200x200"
+                                            src="{{ asset($editData->profile_image) }}" data-holder-rendered="true"> --}}
                                     </div>
                                 </div>
                                 <center>
                                     <input type="submit" class="btn btn-info  waves-effect waves-light ">
-
                                 </center>
 
                             </form>

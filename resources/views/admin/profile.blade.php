@@ -11,8 +11,11 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
+                                {{-- <img class="rounded-circle avatar-xl" alt="200x200"
+                                    src="{{ asset($adminData->profile_image) }}" data-holder-rendered="true"> --}}
                                 <img class="rounded-circle avatar-xl" alt="200x200"
-                                    src="{{ asset($adminData->profile_image) }}" data-holder-rendered="true">
+                                    src="{{ !empty($adminData->profile_image) ? asset($adminData->profile_image) : asset('upload/no_image.jpg') }}"
+                                    data-holder-rendered="true">
                             </center>
                         </div>
                         <div class="card-body">
