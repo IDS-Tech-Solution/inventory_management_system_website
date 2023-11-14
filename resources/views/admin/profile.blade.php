@@ -19,11 +19,11 @@
                         </div>
                         <div class="card-body">
 
-                            <h3>Name: {{ $adminData->name }}</h3>
+                            <h4>Name: {{ $adminData->name }}</h4>
                             <hr>
-                            <h3>User Name: {{ $adminData->username }}</h3>
+                            <h4>User Name: {{ $adminData->username }}</h4>
                             <hr>
-                            <h3>Email: {{ $adminData->email }}</h3>
+                            <h4>Email: {{ $adminData->email }}</h4>
                             <hr>
                             <a href="{{ route('edit.profile') }}"
                                 class="btn btn-info btn-rounded waves-effect waves-light">Edit Profile</a>
