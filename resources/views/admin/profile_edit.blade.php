@@ -13,7 +13,8 @@
                             <hr>
                             <center>
                                 <img class="rounded-circle avatar-xl" alt="200x200"
-                                    src="{{ asset($editData->profile_image) }}" data-holder-rendered="true">
+                                    src="{{ !empty($editData->profile_image) ? asset($editData->profile_image) : asset('upload/no_image.jpg') }}"
+                                    data-holder-rendered="true">
                             </center>
                             <hr>
                             <form action="{{ route('store.profile') }}" method="post" enctype="multipart/form-data">
@@ -51,7 +52,7 @@
                                     <label for="" class="col-sm-2 col-form-label">Profile Image</label>
 
                                     <div class="col-sm-10">
-                                        <img class="rounded avatar-lg" alt="200x200"
+                                        <img id="showImage" class="rounded avatar-lg" alt="200x200"
                                             src="{{ !empty($editData->profile_image) ? asset($editData->profile_image) : asset('upload/no_image.jpg') }}"
                                             data-holder-rendered="true">
                                         {{-- <img class="rounded avatar-lg" alt="200x200"
@@ -76,7 +77,7 @@
             $('#image').change(function(e) {
                 var reader = new FileReader();
                 reader.onload = function(e) {
-                    $('#showImage').attr('src', e.target.result);
+                    $('#showImage').attr('src', e.target.result); //attr=attribute
                 }
                 reader.readAsDataURL(e.target.files['0']);
             });
