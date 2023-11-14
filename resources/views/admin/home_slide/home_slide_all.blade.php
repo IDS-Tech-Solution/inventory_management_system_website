@@ -11,8 +11,9 @@
 
                             <h4 class="text-center">Home Slide Page</h4>
                             <hr>
-                            <form action="{{ route('dashboard') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('update.slider') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $homeslide->title }}">
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
