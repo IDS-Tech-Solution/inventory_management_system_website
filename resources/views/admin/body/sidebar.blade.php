@@ -22,7 +22,7 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('dashboard') }}" class="waves-effect">
                         <i class="ri-dashboard-line"></i>
                         <span class="badge rounded-pill bg-success float-end">3</span>
                         <span>Dashboard</span>
@@ -45,7 +45,7 @@
                         <span>About Page Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('about.page') }}">About Page Setup</a></li>
+                        <li><a href="{{ route('about.page') }}">About Page</a></li>
                     </ul>
                 </li>
 

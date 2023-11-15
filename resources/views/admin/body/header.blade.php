@@ -38,8 +38,8 @@
         </div>
 
         <div class="d-flex">
-
-            <div class="dropdown d-inline-block d-lg-none ms-2">
+            {{-- Search Bar --}}
+            {{-- <div class="dropdown d-inline-block d-lg-none ms-2">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="ri-search-line"></i>
@@ -59,7 +59,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
             @php
                 $id = Auth::user()->id;
                 $adminData = App\Models\User::find($id);
