@@ -55,6 +55,7 @@ Route::controller(HomeSliderController::class)->group(function () {
 Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/page', 'UpdatePage')->name('update.page');
+    Route::get('/about', 'HomeAbout')->name('home.about');
 });
 
 
