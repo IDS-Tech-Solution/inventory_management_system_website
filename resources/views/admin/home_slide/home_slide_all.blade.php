@@ -11,9 +11,10 @@
 
                             <h4 class="text-center">Home Slide Page</h4>
                             <hr>
-                            <form action="{{ route('update.slider') }}" method="post" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('update.slider') }}" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $homeslide->title }}">
+                                <input type="hidden" name="id" value="{{ $homeslide->id }}">
+
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Title</label>
                                     <div class="col-sm-10">
@@ -49,18 +50,12 @@
 
                                     <div class="col-sm-10">
                                         <img id="showImage" name="image" class="rounded avatar-lg" alt="200x200"
-                                            src="{{ !empty($homeslide->image) ? asset('upload/home_slide/' . $homeslide->image) : asset('upload/no_image.jpg') }}"
+                                            src="{{ !empty($homeslide->image) ? asset($homeslide->image) : asset('upload/no_image.jpg') }}"
                                             data-holder-rendered="true">
-                                        {{-- <img id="showImage" class="rounded avatar-lg" alt="200x200"
-                                            src="{{ !empty($homeslide->image) ? asset('upload/home_slide/' . $homeslide->image) : asset('upload/no_image.jpg') }}"
-                                            data-holder-rendered="true"> --}}
-                                        {{-- $homeslide->image --}}
-                                        {{-- <img class="rounded avatar-lg" alt="200x200"
-                                            src="{{ asset($editData->profile_image) }}" data-holder-rendered="true"> --}}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <button class="btn btn-info   " type="submit">Update
+                                    <button class="btn btn-info" type="submit">Update
                                         Slide</button>
                                 </div>
 
