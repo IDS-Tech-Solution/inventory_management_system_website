@@ -96,39 +96,6 @@ class AboutController extends Controller
 
     public function StoreMultiImage(Request $request)
     {
-        // $image = $request->file('multi_image');
-        //     foreach ($image as $multi_image) {
-        //         // Resize the image
-        //         $resizeWidth = 220; // You can set your desired width here
-        //         $resizeHeight = 220; // You can set your desired height here
-
-        //         Image::configure(array('driver' => 'gd'));
-
-        //         $img = Image::make($multi_image->getRealPath());
-        //         $img->resize($resizeWidth, $resizeHeight);
-
-        //         // Generate a unique name for the resized image
-        //         $imageGenName = time() . '.' . $multi_image->getClientOriginalExtension();
-
-        //         // Save the resized image to the destination folder
-        //         $img->save(public_path('upload/multi') . '/' . $imageGenName);
-
-        //         $save_url = 'upload/multi/' . $imageGenName;
-
-        //         MultiImage::insert([
-        //             'multi_image' => $save_url,
-        //             'created_at' => Carbon::now(),
-        //             // 'updated_at' => Carbon::now(),
-        //         ]);
-
-        //         $notification = array(
-        //             'message' => 'Multi Images Insert Successfully',
-        //             'alert-type' => 'success'
-        //         );
-
-        //         return redirect()->back()->with($notification);
-        //     } // End Method
-        //
         try {
             $images = $request->file('multi_image');
             if ($images) {
@@ -178,4 +145,10 @@ class AboutController extends Controller
             throw $th;
         }
     }
+    //End Method
+    public function AllMultiImage()
+    {
+        $allImages = MultiImage::all();
+        return view('admin.about_page.all_multi_image', compact('allImages'));
+    } //End Method
 }
