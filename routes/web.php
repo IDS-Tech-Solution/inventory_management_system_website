@@ -20,7 +20,7 @@ use App\Http\Controllers\Home\AboutController;
 
 Route::get('/', function () {
     return view('frontend.index');
-});
+})->name('home');
 /*
 |--------------------------------------------------------------------------|
 |                            Admin  All Routes                             |
@@ -56,6 +56,8 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/about/page', 'AboutPage')->name('about.page');
     Route::post('/update/page', 'UpdatePage')->name('update.page');
     Route::get('/about', 'HomeAbout')->name('home.about');
+    Route::get('/about/multi/image', 'AboutMultiImage')->name('about.multi.image');
+    Route::post('/store/multi/image', 'StoreMultiImage')->name('store.multi.image');
 });
 
 

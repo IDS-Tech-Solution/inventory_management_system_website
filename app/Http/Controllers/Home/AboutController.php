@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\About;
-use Intervention\Image\ImageManagerStatic as Image;
+use App\Models\MultiImage;
 use Illuminate\Http\Request;
+use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic as Image;
+use PhpParser\Node\Stmt\TryCatch;
 
 class AboutController extends Controller
 {
@@ -83,5 +87,95 @@ class AboutController extends Controller
     {
         $aboutpage = About::find(1);
         return view('frontend.about_page', compact('aboutpage'));
+    }
+    public function AboutMultiImage()
+    {
+        return view('admin.about_page.multiimage');
+    } // End Method
+
+
+    public function StoreMultiImage(Request $request)
+    {
+        // $image = $request->file('multi_image');
+        //     foreach ($image as $multi_image) {
+        //         // Resize the image
+        //         $resizeWidth = 220; // You can set your desired width here
+        //         $resizeHeight = 220; // You can set your desired height here
+
+        //         Image::configure(array('driver' => 'gd'));
+
+        //         $img = Image::make($multi_image->getRealPath());
+        //         $img->resize($resizeWidth, $resizeHeight);
+
+        //         // Generate a unique name for the resized image
+        //         $imageGenName = time() . '.' . $multi_image->getClientOriginalExtension();
+
+        //         // Save the resized image to the destination folder
+        //         $img->save(public_path('upload/multi') . '/' . $imageGenName);
+
+        //         $save_url = 'upload/multi/' . $imageGenName;
+
+        //         MultiImage::insert([
+        //             'multi_image' => $save_url,
+        //             'created_at' => Carbon::now(),
+        //             // 'updated_at' => Carbon::now(),
+        //         ]);
+
+        //         $notification = array(
+        //             'message' => 'Multi Images Insert Successfully',
+        //             'alert-type' => 'success'
+        //         );
+
+        //         return redirect()->back()->with($notification);
+        //     } // End Method
+        //
+        try {
+            $images = $request->file('multi_image');
+            if ($images) {
+                foreach ($images as $image) {
+                    // Resize the image
+                    $resizeWidth = 220; // You can set your desired width here
+                    $resizeHeight = 220; // You can set your desired height here
+
+                    Image::configure(array('driver' => 'gd'));
+
+                    $img = Image::make($image->getRealPath());
+                    $img->resize($resizeWidth, $resizeHeight);
+
+                    // Generate a unique name for the resized image
+                    $imageGenName = $image->getClientOriginalName() . '.' . $image->getClientOriginalExtension();
+
+                    // Save the resized image to the destination folder
+                    $img->save(public_path('upload/multi') . '/' . $imageGenName);
+
+                    $save_url = 'upload/multi/' . $imageGenName;
+
+                    MultiImage::insert([
+                        'multi_image' => $save_url,
+                        'created_at' => Carbon::now(),
+                    ]);
+
+                    // Optionally, you may want to keep track of all saved URLs for notification or other purposes
+                    $savedUrls[] = $save_url;
+                }
+
+                $notification = [
+                    'message' => 'Multi Images Inserted Successfully',
+                    'alert-type' => 'success'
+                ];
+
+                return redirect()->back()->with($notification);
+            } else {
+                // Handle the case when no files were uploaded
+                $notification = [
+                    'message' => 'No images uploaded',
+                    'alert-type' => 'warning'
+                ];
+
+                return redirect()->back()->with($notification);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 }
