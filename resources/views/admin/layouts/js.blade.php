@@ -6,7 +6,6 @@
     <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
 
     <!-- Buttons -->
-    <script src="{{ asset('backend/assets/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('backend/assets/libs/jszip/jszip.min.js') }}"></script>
@@ -41,7 +40,7 @@
 
     <!-- App js -->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
-    {{-- <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js') }}"></script> --}}
+    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js') }}"></script>
     <!--tinymce js-->
     <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
 
@@ -74,37 +73,6 @@
     </script>
 
     {{-- Sweet Alert --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
-
-
-    $(function(){
-    $(document).on('click','#delete',function(e){
-    e.preventDefault();
-    var link = $(this).attr("href");
-
-
-    Swal.fire({
-    title: 'Are you sure?',
-    text: "Delete This Data?",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-    if (result.isConfirmed) {
-    window.location.href = link
-    Swal.fire(
-    'Deleted!',
-    'Your file has been deleted.',
-    'success'
-    )
-    }
-    })
-
-
-    });
-
-    }); --}}

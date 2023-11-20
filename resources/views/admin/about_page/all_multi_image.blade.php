@@ -58,9 +58,14 @@
                                             <td>{{ $i++ }}</td>
                                             <td><img src="{{ asset($item->multi_image) }}"
                                                     style="height: 40px; width: 70px;" alt=""> </td>
-                                            <td> <a href="" class="btn btn-warning">Edit</a> </td>
+                                            <td>
+                                                <a href="{{ route('edit.multi.image', $item->id) }}"
+                                                    class="btn btn-warning sm"> <i class="fas fa-edit"></i>Edit</a>
+                                                <a href="{{ route('delete.multi.image', $item->id) }}" id="delete"
+                                                    class="btn btn-danger sm"><i class="fas fa-trash-alt"></i>Delete</a>
+                                            </td>
                                         </tr>
-                                        {{-- todo! --}}
+                                        {{-- todo --}}
                                     @endforeach
 
                                 </tbody>

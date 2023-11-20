@@ -9,4 +9,8 @@ class MultiImage extends Model
 {
     use HasFactory;
     protected $gruaded = [];
+    protected $fillable = [
+        'multi_image',
+        // other fillable attributes if any
+    ];
 }

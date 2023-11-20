@@ -151,4 +151,77 @@ class AboutController extends Controller
         $allImages = MultiImage::all();
         return view('admin.about_page.all_multi_image', compact('allImages'));
     } //End Method
+
+    public function EditMultiImage($id)
+    {
+        $editImage = MultiImage::findOrFail($id);
+        return view('admin.about_page.edit_multi_image', compact('editImage'));
+    } //End Method
+    public function UpdateMultiImage(Request $request)
+    {
+        try {
+
+            $update_id = $request->id;
+            if ($request->file('multi_image')) {
+                $image = $request->file('multi_image');
+
+                // Resize the image
+                $resizeWidth = 220; // You can set your desired width here
+                $resizeHeight = 220; // You can set your desired height here
+
+                Image::configure(array('driver' => 'gd'));
+
+                $img = Image::make($image->getRealPath());
+                $img->resize($resizeWidth, $resizeHeight);
+
+                // Generate a unique name for the resized image
+                $imageGenName = $image->getClientOriginalName() . '.' . $image->getClientOriginalExtension();
+                // Save the resized image to the destination folder
+                $img->save(public_path('upload/multi') . '/' . $imageGenName);
+
+                $save_url = 'upload/multi/' . $imageGenName;
+
+                MultiImage::findOrFail($update_id)->update([
+
+                    'multi_image' => $save_url,
+                    'updated_at' => Carbon::now(),
+                ]);
+
+                $notification = array(
+                    'message' => 'Multi Image Updated Successfully',
+                    'alert-type' => 'success'
+                );
+
+                return redirect()->route('all.multi.image')->with($notification);
+            } else {
+                // Handle the case when no files were uploaded
+                $notification = [
+                    'message' => 'No images Updated',
+                    'alert-type' => 'warning'
+                ];
+
+                return redirect()->route('all.multi.image')->with($notification);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    } //End Method
+    public function DeleteMultiImage($id)
+    {
+        try {
+
+            $delete_image = MultiImage::findOrFail($id);
+            $delete_id = $delete_image->multi_image;
+            unlink($delete_id);
+            MultiImage::findOrFail($id)->delete();
+            $notification = array(
+                'message' => 'Multi Image Deleted Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->back()->with($notification);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }
