@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\AboutController;
+use App\Http\Controllers\Home\PortfolioController;
+
 
 
 
@@ -67,7 +69,23 @@ Route::controller(AboutController::class)->group(function () {
     Route::get('/delete/multi/image/{id}', 'DeleteMultiImage')->name('delete.multi.image');
 });
 
+/*
+|--------------------------------------------------------------------------|
+|                             Portfolio All Routes                             |
+|--------------------------------------------------------------------------|
+*/
 
+Route::controller(PortfolioController::class)->group(function () {
+    Route::get('/view/portfolio', 'ViewPortfolio')->name('view.portfolio');
+    //video te route name chilo all.protfoliop
+    Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
+    Route::post('/store/portfolio', 'StorePortfolio')->name('store.portfolio');
+});
+/*
+|--------------------------------------------------------------------------|
+|                             Dashboard All Routes                             |
+|--------------------------------------------------------------------------|
+*/
 
 Route::get('/dashboard', function () {
     return view('admin.index');

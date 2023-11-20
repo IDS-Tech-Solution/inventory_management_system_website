@@ -32,7 +32,7 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-mail-send-line"></i>
+                        <i class="ri-home-8-line"></i>
                         <span>Home Slide Setup</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -48,6 +48,17 @@
                         <li><a href="{{ route('about.page') }}">About Page</a></li>
                         <li><a href="{{ route('about.multi.image') }}">About Multi image</a></li>
                         <li><a href="{{ route('all.multi.image') }}">All Multi image</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-profile-line"></i>
+                        <span>Portfolio Page Setup</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+
+                        <li><a href="{{ route('view.portfolio') }}">All Portfolio</a></li>
+                        <li><a href="{{ route('') }}">Add Portfolio</a></li>
                     </ul>
                 </li>
 
