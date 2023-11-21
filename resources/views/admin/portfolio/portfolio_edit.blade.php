@@ -9,19 +9,16 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <h4 class="text-center">Portfolio Page</h4>
+                            <h4 class="text-center">Portfolio Edit Page</h4>
                             <hr>
-                            <form method="post" action="{{ route('store.portfolio') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('update.portfolio') }}" enctype="multipart/form-data">
                                 @csrf
-
+                                <input type="hidden" name="id" value="{{ $portfolio->id }}">
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Portfolio Name</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="portfolio_name" value=""
-                                            required>
-                                        {{-- @error('portfolio_name')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror --}}
+                                        <input class="form-control" type="text" name="portfolio_name"
+                                            value="{{ $portfolio->portfolio_name }}" required>
                                     </div>
                                 </div>
                                 {{-- end row --}}
@@ -29,27 +26,24 @@
                                     <label for="" class="col-sm-2 col-form-label">Portfolio Title</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="text" placeholder="" name="portfolio_title"
-                                            value="" required>
-                                        {{-- @error('portfolio_name')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror --}}
+                                            value="{{ $portfolio->portfolio_title }}" required>
                                     </div>
                                 </div>
                                 {{-- end row --}}
-
                                 <div class="row mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Portfolio
                                         Description</label>
 
                                     <div class="col-sm-10">
-                                        <textarea id="elm1" name="portfolio_description" value=""></textarea>
+                                        <textarea id="elm1" name="portfolio_description">{{ $portfolio->portfolio_description }}</textarea>
                                     </div>
                                 </div>{{-- end row --}}
-                                <div class="row mb-3">
+                                <div class="row
+                                            mb-3">
                                     <label for="" class="col-sm-2 col-form-label">Portfolio Image</label>
                                     <div class="col-sm-10">
                                         <input class="form-control" type="file" accept="image/*" placeholder=""
-                                            name="portfolio_image" id="images" value="" required>
+                                            name="portfolio_image" id="images">
                                     </div>
                                 </div>
                                 {{-- end row --}}
@@ -58,7 +52,7 @@
 
                                     <div class="col-sm-10">
                                         <img id="showImage" name="image" class="rounded avatar-lg" alt="200x200"
-                                            src="{{ asset('upload/no_image.jpg') }}" data-holder-rendered="true">
+                                            src="{{ asset($portfolio->portfolio_image) }}" data-holder-rendered="true">
                                     </div>
                                 </div>{{-- end row --}}
 

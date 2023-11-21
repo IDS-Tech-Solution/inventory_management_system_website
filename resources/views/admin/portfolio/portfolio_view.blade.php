@@ -27,8 +27,8 @@
                                         <th>SL</th>
                                         <th>Portfolio Name</th>
                                         <th>Portfolio Title</th>
-                                        <th>Portfolio Image</th>
                                         <th>Portfolio Description</th>
+                                        <th>Portfolio Image</th>
                                         <th>Action </th>
                                     </tr>
                                 </thead>
@@ -43,15 +43,17 @@
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $item->portfolio_name }}</td>
                                             <td>{{ $item->portfolio_title }}</td>
-                                            <td>{{ $item->portfolio_description }}</td>
+                                            <td>{!! $item->portfolio_description !!}</td>
 
                                             <td><img src="{{ asset($item->portfolio_image) }}"
                                                     style="height: 40px; width: 70px;" alt=""> </td>
                                             <td>
-                                                <a href="{{ route('edit.multi.image', $item->id) }}"
-                                                    class="btn btn-warning sm"> <i class="fas fa-edit"></i>Edit</a>
-                                                <a href="{{ route('delete.multi.image', $item->id) }}" id="delete"
-                                                    class="btn btn-danger sm"><i class="fas fa-trash-alt"></i>Delete</a>
+                                                <a href="{{ route('edit.portfolio', $item->id) }}"
+                                                    class="btn btn-warning sm"> Edit <i class="fas fa-edit"></i> </a>
+
+                                                <a href="{{ route('delete.portfolio', $item->id) }}" id="delete"
+                                                    class="btn btn-danger sm"> Delete <i class="fas fa-trash-alt"></i></a>
+
                                             </td>
                                         </tr>
                                         {{-- todo --}}

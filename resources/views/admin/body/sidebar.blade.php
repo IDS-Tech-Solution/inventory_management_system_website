@@ -58,7 +58,7 @@
                     <ul class="sub-menu" aria-expanded="false">
 
                         <li><a href="{{ route('view.portfolio') }}">All Portfolio</a></li>
-                        <li><a href="{{ route('') }}">Add Portfolio</a></li>
+                        <li><a href="{{ route('add.portfolio') }}">Add Portfolio</a></li>
                     </ul>
                 </li>
 

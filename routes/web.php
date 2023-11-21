@@ -76,11 +76,15 @@ Route::controller(AboutController::class)->group(function () {
 */
 
 Route::controller(PortfolioController::class)->group(function () {
-    Route::get('/view/portfolio', 'ViewPortfolio')->name('view.portfolio');
-    //video te route name chilo all.protfoliop
+    Route::get('/view/portfolio', 'ViewPortfolio')->name('view.portfolio'); //video te route name chilo all.portfolio
     Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
     Route::post('/store/portfolio', 'StorePortfolio')->name('store.portfolio');
+
+    Route::get('/edit/portfolio/{id}', 'EditPortfolio')->name('edit.portfolio');
+    Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
+    Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
 });
+
 /*
 |--------------------------------------------------------------------------|
 |                             Dashboard All Routes                             |
