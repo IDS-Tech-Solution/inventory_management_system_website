@@ -13,14 +13,25 @@ class PortfolioController extends Controller
 {
     public function ViewPortfolio()
     {
-        $portfolio = Portfolio::latest()->get();
-        return view('admin.portfolio.portfolio_view', compact('portfolio'));
+        try {
+            $portfolio = Portfolio::latest()->get();
+            return view('admin.portfolio.portfolio_view', compact('portfolio'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+        // converted to try catch
+        // $portfolio = Portfolio::latest()->get();
+        // return view('admin.portfolio.portfolio_view', compact('portfolio'));
+
     }
-    //end Function
+    //End Function
     public function AddPortfolio()
     {
-
-        return view('admin.portfolio.portfolio_add');
+        try {
+            return view('admin.portfolio.portfolio_add');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
     //End Function
     public function StorePortfolio(Request $request)
@@ -86,6 +97,7 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::findOrFail($id);
         return view('admin.portfolio.portfolio_edit', compact('portfolio'));
     }
+    //End Function
     public function UpdatePortfolio(Request $request)
     {
         try {
@@ -95,8 +107,8 @@ class PortfolioController extends Controller
                 $image = $request->file('portfolio_image');
 
                 // Resize the image
-                $resizeWidth = 220; // You can set your desired width here
-                $resizeHeight = 220; // You can set your desired height here
+                $resizeWidth = 1020; // You can set your desired width here
+                $resizeHeight = 519; // You can set your desired height here
 
                 Image::configure(array('driver' => 'gd'));
 
@@ -165,6 +177,15 @@ class PortfolioController extends Controller
             );
 
             return redirect()->back()->with($notification);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    } //End Method
+    public function PortfolioDetail($id)
+    {
+        try {
+            $portfolio = Portfolio::findOrFail($id);
+            return view('frontend.portfolio_detail', compact('portfolio'));
         } catch (\Throwable $th) {
             throw $th;
         }
