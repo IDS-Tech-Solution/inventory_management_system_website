@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\BlogController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\BlogCategoryController;
 
 
@@ -31,7 +32,7 @@ Route::get('/', function () {
 */
 Route::controller(AdminController::class)->group(function () {
     Route::get('/change/password', 'change_password')->name('change.password');
-    Route::post('/update/password', 'update_password')->name('update.password');
+    Route::post('/pass/updateword', 'update_password')->name('update.password');
 
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
     Route::get('/admin/profile', 'profile')->name('admin.profile');
@@ -102,6 +103,21 @@ Route::controller(BlogCategoryController::class)->group(function () {
     Route::get('/edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
     Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
     Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+});
+/*
+|--------------------------------------------------------------------------|
+|                             Blog Routes                             |
+|--------------------------------------------------------------------------|
+*/
+
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/all/blog', 'allBlog')->name('all.blog');
+    Route::get('/add/blog', 'addBlog')->name('add.blog');
+    Route::post('/store/blog', 'storeBlog')->name('store.blog');
+
+    Route::get('/blog/edit/{id}', 'editBlog')->name('blog.edit');
+    Route::post('/blog/update', 'updateBlog')->name('blog.update');
+    Route::get('/blog/delete/{id}', 'deleteBlog')->name('blog.delete');
 });
 
 /*
