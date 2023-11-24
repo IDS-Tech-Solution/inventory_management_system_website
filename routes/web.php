@@ -104,6 +104,7 @@ Route::controller(BlogCategoryController::class)->group(function () {
     Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
     Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
 });
+
 /*
 |--------------------------------------------------------------------------|
 |                             Blog Routes                             |
@@ -118,6 +119,8 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/blog/edit/{id}', 'editBlog')->name('blog.edit');
     Route::post('/blog/update', 'updateBlog')->name('blog.update');
     Route::get('/blog/delete/{id}', 'deleteBlog')->name('blog.delete');
+
+    Route::get('blog/details/{id}', 'blogDetails')->name('blog.details');
 });
 
 /*

@@ -70,7 +70,6 @@ class BlogController extends Controller
             throw $th;
         }
     }
-
     public function editBlog($id)
     {
         try {
@@ -153,6 +152,17 @@ class BlogController extends Controller
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notification);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function blogDetails($id)
+    {
+        try {
+            $all = Blog::latest()->limit(5)->get();
+            $category = BlogCategory::orderby('blog_category', 'ASC')->get();
+            $blogDetails = Blog::findOrFail($id);
+            return view('frontend.blog_details', compact('blogDetails', 'all', 'category'));
         } catch (\Throwable $th) {
             throw $th;
         }
