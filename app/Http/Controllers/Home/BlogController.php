@@ -167,4 +167,28 @@ class BlogController extends Controller
             throw $th;
         }
     }
+    public function blogCategories($id)
+    {
+        try {
+
+            $blogPost = Blog::where('blog_category_id', $id)->orderBy('id', 'DESC')->get();
+            $all = Blog::latest()->limit(5)->get();
+            $category = BlogCategory::orderby('blog_category', 'ASC')->get();
+            $categoryName = BlogCategory::findOrFail($id);
+            return view('frontend.blog_categories', compact('blogPost', 'all', 'category', 'categoryName'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+    public function blogHome()
+    {
+        try {
+            $all = Blog::latest()->get();
+            $category = BlogCategory::orderby('blog_category', 'ASC')->get();
+
+            return view('admin.blog.blogHome', compact('all', 'category'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
 }

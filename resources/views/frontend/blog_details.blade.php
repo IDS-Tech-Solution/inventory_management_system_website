@@ -20,12 +20,13 @@
             </div>
             <div class="breadcrumb__wrap__icon">
                 <ul>
-                    <li><img src="assets/img/icons/breadcrumb_icon01.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon02.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon03.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon04.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon05.png" alt=""></li>
-                    <li><img src="assets/img/icons/breadcrumb_icon06.png" alt=""></li>
+                    <li><img src="{{ asset('frontend/assets/img/icons/breadcrumb_icon01.png') }}" alt=""></li>
+                    <li><img src="{{ asset('frontend/assets/img/icons/breadcrumb_icon03.png') }}" alt=""></li>
+                    <li><img src="{{ asset('frontend/assets/img/icons/breadcrumb_icon04.png') }}" alt=""></li>
+                    <li><img src="{{ asset('frontend/assets/img/icons/breadcrumb_icon05.png') }}" alt=""></li>
+                    <li><img src="{{ asset('frontend/assets/img/icons/breadcrumb_icon02.png') }}" alt=""></li>
+                    <li><img src="{{ asset('frontend/assets/img/icons/breadcrumb_icon06.png') }}" alt=""></li>
+
                 </ul>
             </div>
         </section>
@@ -54,10 +55,7 @@
                                 <ul class="blog__details__tag">
                                     <li class="title">Tag:</li>
                                     <li class="tags-list">
-                                        <a href="#">Business</a>
-                                        <a href="#">Design</a>
-                                        <a href="#">apps</a>
-                                        <a href="#">data</a>
+                                        <a href="#">{{ $blogDetails->blog_tag }}</a>
                                     </li>
                                 </ul>
                                 <ul class="blog__details__social">
@@ -216,6 +214,8 @@
                                     <button type="submit"><i class="fal fa-search"></i></button>
                                 </form>
                             </div>
+
+                            {{-- This is the code for recent blog --}}
                             <div class="widget">
                                 <h4 class="widget-title">Recent Blog</h4>
                                 <ul class="rc__post">
@@ -240,7 +240,8 @@
                                 <h4 class="widget-title">Categories</h4>
                                 <ul class="sidebar__cat">
                                     @foreach ($category as $cat)
-                                        <li class="sidebar__cat__item"><a href="blog.html">{{ $cat->blog_category }}</a>
+                                        <li class="sidebar__cat__item"><a
+                                                href="{{ route('blog.categories', $cat->id) }}">{{ $cat->blog_category }}</a>
                                         </li>
                                     @endforeach
 

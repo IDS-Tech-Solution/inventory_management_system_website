@@ -25,7 +25,7 @@
                                     </li>
                                     <li class="menu-item-has-children"><a href="#">Our Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog.html">Our News</a></li>
+                                            <li><a href="{{ route('blog.home') }}">Our News</a></li>
                                             <li><a href="blog-details.html">News Details</a></li>
                                         </ul>
                                     </li>
@@ -45,7 +45,8 @@
                                 <a href="{{ route('home') }}" class="logo__black"><img
                                         src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
                                 <a href="{{ route('home') }}" class="logo__white"><img
-                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                        src="{{ asset('frontend/assets/img/logo/logo_white.png') }}"
+                                        alt=""></a>
                             </div>
                             <div class="menu__outer">
                                 <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
