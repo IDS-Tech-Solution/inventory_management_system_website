@@ -11,6 +11,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PortfolioController extends Controller
 {
+
     public function ViewPortfolio()
     {
         try {
@@ -186,6 +187,16 @@ class PortfolioController extends Controller
         try {
             $portfolio = Portfolio::findOrFail($id);
             return view('frontend.portfolio_detail', compact('portfolio'));
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    } //End Method
+
+    public function PortfolioHome()
+    {
+        try {
+            $portfolio = Portfolio::latest()->get();
+            return view('frontend.portfolio', compact('portfolio'));
         } catch (\Throwable $th) {
             throw $th;
         }
