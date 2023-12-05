@@ -183,10 +183,10 @@ class BlogController extends Controller
     public function blogHome()
     {
         try {
-            $all = Blog::latest()->get();
+            $all = Blog::latest()->paginate(3);
             $category = BlogCategory::orderby('blog_category', 'ASC')->get();
 
-            return view('admin.blog.blogHome', compact('all', 'category'));
+            return view('frontend.blogHome', compact('all', 'category'));
         } catch (\Throwable $th) {
             throw $th;
         }
