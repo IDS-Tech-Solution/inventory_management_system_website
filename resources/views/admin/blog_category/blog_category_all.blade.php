@@ -31,12 +31,15 @@
 
 
                                 <tbody>
-                                    @php
+                                    {{-- @php
                                         $i = 1;
-                                    @endphp
-                                    @foreach ($blogcategory as $item)
+                                    @endphp --}}
+                                    {{-- todo $key is update version --}}
+
+                                    @foreach ($blogcategory as $key => $item)
                                         <tr>
-                                            <td>{{ $i++ }}</td>
+                                            {{-- <td>{{ $i++ }}</td> --}}
+                                            <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->blog_category }}</td>
                                             <td>
                                                 <a href="{{ route('edit.blog.category', $item->id) }}"
